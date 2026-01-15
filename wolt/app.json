@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "first-react-native",
-    "slug": "first-react-native",
+    "name": "wolt",
+    "slug": "wolt",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "firstreactnative",
+    "scheme": "wolt",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
