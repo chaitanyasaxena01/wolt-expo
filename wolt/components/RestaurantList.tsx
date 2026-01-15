@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
+import { Link } from 'expo-router';
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 // Mock Data
 const RESTAURANTS = [
@@ -24,29 +25,31 @@ export const RestaurantList = ({ isVegOnly }: RestaurantListProps) => {
         <View style={styles.container}>
             <Text style={styles.title}>All Restaurants</Text>
             {filteredRestaurants.map((item) => (
-                <View key={item.id} style={styles.card}>
-                    <View style={styles.imageContainer}>
-                        <Image source={{ uri: item.image }} style={styles.image} />
-                        <View style={styles.promoTag}>
-                            <Text style={styles.promoText}>50% OFF</Text>
-                        </View>
-                    </View>
-                    <View style={styles.info}>
-                        <View style={styles.row}>
-                            <Text style={styles.name}>{item.name}</Text>
-                            <View style={styles.ratingBadge}>
-                                <Text style={styles.ratingText}>{item.rating}</Text>
-                                <Ionicons name="star" size={12} color="white" />
+                <Link href={`/restaurant/${item.id}`} key={item.id} asChild>
+                    <Pressable style={styles.card}>
+                        <View style={styles.imageContainer}>
+                            <Image source={{ uri: item.image }} style={styles.image} />
+                            <View style={styles.promoTag}>
+                                <Text style={styles.promoText}>50% OFF</Text>
                             </View>
                         </View>
-                        <View style={styles.row}>
-                            <Text style={styles.cuisine}>{item.cuisine}</Text>
-                            <Text style={styles.time}>{item.time}</Text>
+                        <View style={styles.info}>
+                            <View style={styles.row}>
+                                <Text style={styles.name}>{item.name}</Text>
+                                <View style={styles.ratingBadge}>
+                                    <Text style={styles.ratingText}>{item.rating}</Text>
+                                    <Ionicons name="star" size={12} color="white" />
+                                </View>
+                            </View>
+                            <View style={styles.row}>
+                                <Text style={styles.cuisine}>{item.cuisine}</Text>
+                                <Text style={styles.time}>{item.time}</Text>
+                            </View>
+                            <View style={styles.divider} />
+                            <Text style={styles.footerText}>FREE DELIVERY</Text>
                         </View>
-                        <View style={styles.divider} />
-                        <Text style={styles.footerText}>FREE DELIVERY</Text>
-                    </View>
-                </View>
+                    </Pressable>
+                </Link>
             ))}
         </View>
     );
